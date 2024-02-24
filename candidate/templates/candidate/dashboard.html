@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Listings</title>
+</head>
+<body>
+  <div class="container">
+    {% include 'candidate/navbar.html' %}
+    <div class="job-listings">
+      {% for job in jobpost %}
+        <div class="job-card">
+          <div class="active-tag" >Active</div>
+          <div class="job-header">
+            <h3 >{{job.title}}</h3>
+            <span class="job-location" >{{job.address}}</span>
+          </div>
+          <div class="job-details">
+            <p>Company: {{job.compnayName}}</p>
+            <p>Salary: ${{job.salaryLow}} - ${{job.salary.High}}</p>
+            <p>Last Date: {{job.lastDateToApply}}</p>
+          </div>
+          <button class="apply-button"><a href="{% url 'apply' job.id %}" style="text-decoration: none;
+            color: inherit;">Apply Now</a></button>
+        </div>
+      {% endfor %}
+      </div>
+  </div>
+</body>
+</html>
